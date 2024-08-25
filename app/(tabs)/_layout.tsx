@@ -6,8 +6,10 @@ import { Pressable } from 'react-native';
 import Colors from '@/constants/Colors';
 import { useColorScheme } from '@/components/useColorScheme';
 import { useClientOnlyValue } from '@/components/useClientOnlyValue';
+import TabOneScreen from '@/app/tabs/TabOneScreen';
+import TabTwoScreen from '@/app/tabs/TabTwoScreen'; 
 
-// You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
+
 function TabBarIcon(props: {
   name: React.ComponentProps<typeof FontAwesome>['name'];
   color: string;
@@ -46,7 +48,17 @@ export default function TabLayout() {
             </Link>
           ),
         }}
+        component={TabOneScreen} // Set TabOneScreen as the component for this tab
+      />
+      <Tabs.Screen
+        name="tabTwo"
+        options={{
+          title: 'Tab Two',
+          tabBarIcon: ({ color }) => <TabBarIcon name="list" color={color} />,
+        }}
+        component={TabTwoScreen} // Set TabTwoScreen as the component for the new tab
       />
     </Tabs>
   );
 }
+
